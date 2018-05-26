@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Untangle", "Untangle\Untangle.csproj", "{9168DDD0-6825-4CEA-B88B-C147A200D9BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9168DDD0-6825-4CEA-B88B-C147A200D9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9168DDD0-6825-4CEA-B88B-C147A200D9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9168DDD0-6825-4CEA-B88B-C147A200D9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9168DDD0-6825-4CEA-B88B-C147A200D9BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC54B10F-31E5-43C0-8AA6-B150FF4F2D07}
+	EndGlobalSection
+EndGlobal

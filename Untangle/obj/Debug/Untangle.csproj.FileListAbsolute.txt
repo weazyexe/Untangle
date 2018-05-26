@@ -1,0 +1,10 @@
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.csprojResolveAssemblyReference.cache
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.GameForm.resources
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.Properties.Resources.resources
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.csproj.GenerateResource.cache
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.csproj.CoreCompileInputs.cache
+C:\Users\weazy\Desktop\Untangle\Untangle\bin\Debug\Untangle.exe.config
+C:\Users\weazy\Desktop\Untangle\Untangle\bin\Debug\Untangle.exe
+C:\Users\weazy\Desktop\Untangle\Untangle\bin\Debug\Untangle.pdb
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.exe
+C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.pdb
