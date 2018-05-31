@@ -35,6 +35,8 @@ namespace Untangle
         // Списки ребер и вершин
         static List<Edge> Edges = new List<Edge>();
         public static List<Vertex> Vertices = new List<Vertex>();
+        public static List<Vertex> SolvedVertices = new List<Vertex>();
+        static List<Edge> SolvedEdges = new List<Edge>();
         #endregion
 
         #region CONSTRUCTOR
@@ -191,6 +193,22 @@ namespace Untangle
                 isPlay = false;
                 MainMenuButton.Enabled = false;
             }        
+        }
+
+        private void SolveButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Vertices.Count; i++)
+            {
+                Vertices[i].Location = SolvedVertices[i].Location;
+            }
+
+            for (int i = 0; i < Edges.Count; i++)
+            {
+                Edges[i].Location = SolvedEdges[i].Location;
+            }
+
+            DrawAll();
+            IsWin(sender, new MouseEventArgs(MouseButtons.Left, 1, 1, 1, 1));
         }
 
         private void ExitStartMenuButton_Click(object sender, EventArgs e)
@@ -436,6 +454,20 @@ namespace Untangle
 
             InitializeVertices();
             InitializeEdges();
+
+            SolvedVertices = new List<Vertex>();
+            SolvedEdges = new List<Edge>();
+
+            for (int i = 0; i < Vertices.Count; i++)
+            {
+                SolvedVertices.Add(new Vertex(VertexDesign, Vertices[i].Location));
+            }
+
+            for (int i = 0; i < Edges.Count; i++)
+            {
+                SolvedEdges.Add(new Edge(RightEdgeDesign, Edges[i].Location));
+            }
+
             RandomizeGraph();
             isPlay = true;
             DrawAll();

@@ -8,3 +8,13 @@ C:\Users\weazy\Desktop\Untangle\Untangle\bin\Debug\Untangle.exe
 C:\Users\weazy\Desktop\Untangle\Untangle\bin\Debug\Untangle.pdb
 C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.exe
 C:\Users\weazy\Desktop\Untangle\Untangle\obj\Debug\Untangle.pdb
+E:\repositories\Untangle\Untangle\bin\Debug\Untangle.exe.config
+E:\repositories\Untangle\Untangle\bin\Debug\Untangle.exe
+E:\repositories\Untangle\Untangle\bin\Debug\Untangle.pdb
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csprojResolveAssemblyReference.cache
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.GameForm.resources
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.Properties.Resources.resources
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csproj.GenerateResource.cache
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csproj.CoreCompileInputs.cache
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.exe
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.pdb
