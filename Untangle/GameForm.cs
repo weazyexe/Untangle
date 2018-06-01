@@ -33,7 +33,7 @@ namespace Untangle
         Graphics graphics;
 
         // Всякие булевы штучки
-        bool isWin, isMoveVertex, isPlay, isNewGame = true, isAutoSolve;
+        bool isWin, isMoveVertex, isPlay, isNewGame = true;
 
         public static string name;
 
