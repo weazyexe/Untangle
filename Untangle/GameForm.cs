@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
+using WMPLib;
 
 namespace Untangle
 {
@@ -24,7 +25,10 @@ namespace Untangle
             generationsCount,   // количество итераций для генерации рёбер, задаётся в коде
             level = 6,            // уровень сложности (начинается с 4 вершин)
             autoSolves = 0;
-            
+
+        // Плеер
+        WindowsMediaPlayer player = new WindowsMediaPlayer();
+
 
         // Картинка, для сохранения результата и отображения
         Bitmap bitmap;
@@ -35,8 +39,10 @@ namespace Untangle
         // Всякие булевы штучки
         bool isWin, isMoveVertex, isPlay, isNewGame = true;
 
+        // Никнейм
         public static string name;
 
+        // Таблица результатов
         string results;
 
         // Списки ребер и вершин
@@ -44,6 +50,7 @@ namespace Untangle
         public static List<Vertex> Vertices = new List<Vertex>();
         static List<Vertex> SolvedVertices = new List<Vertex>();
         static List<Edge> SolvedEdges = new List<Edge>();
+
         #endregion
 
         #region CONSTRUCTOR
@@ -108,6 +115,20 @@ namespace Untangle
             {
                 results = sr.ReadToEnd();
                 sr.Close();
+            }
+            player.URL = Application.StartupPath + @"\background.wav";
+            player.settings.volume = 1;
+            player.settings.playCount = 10000;
+            player.controls.play();
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FileStream fs = new FileStream("result.txt", FileMode.OpenOrCreate);
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                sw.WriteLine(results);
+                sw.Close();
             }
         }
 
@@ -201,6 +222,7 @@ namespace Untangle
             if (dr == DialogResult.Yes)
             {
                 level = 6;
+                autoSolves = 0;
                 Vertices.Clear();
                 Edges.Clear();
                 DrawAll();
@@ -251,6 +273,20 @@ namespace Untangle
         private void AboutAppButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Untangle: The Puzzle Game\nCompilation date: 26.05.2018 22:55\nDevs: Zadvornov T., Vokhmyanin A., Vorobyov A.", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void PlayStopButton_Click(object sender, EventArgs e)
+        {
+            if (PlayStopButton.Text == "Stop Music")
+            {
+                player.controls.pause();
+                PlayStopButton.Text = "Play Music";
+            }
+            else
+            {
+                player.controls.play();
+                PlayStopButton.Text = "Stop Music";
+            }
         }
         #endregion
 
@@ -313,24 +349,14 @@ namespace Untangle
             return false;
         }
 
-        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            FileStream fs = new FileStream("result.txt", FileMode.OpenOrCreate);
-            using (StreamWriter sw = new StreamWriter(fs))
-            {
-                sw.WriteLine(results);
-                sw.Close();
-            }
-        }
-
         /// <summary>
         /// Инициализация списка ребёр, соединение соседних вершин ребрами
         /// </summary>
         private void InitializeCircleEdges()
         {
             Edges.Clear();  // чистим список рёбер
-
-            // мутим рёбра
+            
+            // соединяем вершины по кругу
             for (int i = 1; i < verticesCount; i++)
                 Edges.Add(new Edge(RightEdgeDesign, new Point(i - 1, i)));
 
@@ -544,6 +570,7 @@ namespace Untangle
                 {
                     results += String.Format("{0}\t Level: {1}\t Solved himself: {2}\t Auto solve: {3}\n", name, level - 5, level - 5 - autoSolves, autoSolves);
                     level = 4;
+                    autoSolves = 0;
                     Vertices.Clear();
                     Edges.Clear();
                     DrawAll();

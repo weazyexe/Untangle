@@ -8,3 +8,33 @@ alastor	 Level: 1	 Solved himself: 0	 Auto solve: 1
 
 floppy hills	 Level: 6	 Solved himself: 4	 Auto solve: 2
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+lol	 Level: 4	 Solved himself: 3	 Auto solve: 1
+
+

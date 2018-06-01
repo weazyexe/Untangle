@@ -19,3 +19,8 @@ E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csproj.CoreCompileInputs.ca
 E:\repositories\Untangle\Untangle\obj\Debug\Untangle.exe
 E:\repositories\Untangle\Untangle\obj\Debug\Untangle.pdb
 E:\repositories\Untangle\Untangle\obj\Debug\Untangle.AuthForm.resources
+E:\repositories\Untangle\Untangle\obj\Debug\Interop.WMPLib.dll
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csproj.ResolveComReference.cache
+E:\repositories\Untangle\Untangle\bin\Debug\Interop.WMPLib.dll
+E:\repositories\Untangle\Untangle\bin\Debug\AxInterop.WMPLib.dll
+E:\repositories\Untangle\Untangle\obj\Debug\AxInterop.WMPLib.dll

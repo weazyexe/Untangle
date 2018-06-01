@@ -46,6 +46,7 @@
             this.TitleUnderLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.Field = new System.Windows.Forms.PictureBox();
+            this.PlayStopButton = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Field)).BeginInit();
@@ -56,7 +57,8 @@
             this.MainMenu.BackColor = System.Drawing.Color.White;
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gameToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.PlayStopButton});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Size = new System.Drawing.Size(784, 24);
@@ -238,6 +240,13 @@
             this.Field.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Field_MouseMove);
             this.Field.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Field_MouseUp);
             // 
+            // PlayStopButton
+            // 
+            this.PlayStopButton.Name = "PlayStopButton";
+            this.PlayStopButton.Size = new System.Drawing.Size(78, 20);
+            this.PlayStopButton.Text = "Stop Music";
+            this.PlayStopButton.Click += new System.EventHandler(this.PlayStopButton_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,6 +291,7 @@
         private System.Windows.Forms.Button RulesStartMenuButton;
         private System.Windows.Forms.ToolStripMenuItem SolveButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem PlayStopButton;
     }
 }
 
