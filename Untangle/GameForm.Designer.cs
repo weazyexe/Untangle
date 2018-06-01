@@ -33,6 +33,8 @@
             this.MainMenuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.SolveButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitButton = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RulesButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +46,6 @@
             this.TitleUnderLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.Field = new System.Windows.Forms.PictureBox();
-            this.SolveButton = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.MainMenu.SuspendLayout();
             this.MainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Field)).BeginInit();
@@ -79,26 +79,38 @@
             // 
             this.MainMenuButton.Enabled = false;
             this.MainMenuButton.Name = "MainMenuButton";
-            this.MainMenuButton.Size = new System.Drawing.Size(180, 22);
+            this.MainMenuButton.Size = new System.Drawing.Size(177, 22);
             this.MainMenuButton.Text = "Main Menu";
             this.MainMenuButton.Click += new System.EventHandler(this.MainMenuButton_Click);
             // 
             // SaveButton
             // 
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(180, 22);
+            this.SaveButton.Size = new System.Drawing.Size(177, 22);
             this.SaveButton.Text = "Save Current Image";
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            // 
+            // SolveButton
+            // 
+            this.SolveButton.Name = "SolveButton";
+            this.SolveButton.Size = new System.Drawing.Size(177, 22);
+            this.SolveButton.Text = "Solve Level";
+            this.SolveButton.Click += new System.EventHandler(this.SolveButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
             // 
             // ExitButton
             // 
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(180, 22);
+            this.ExitButton.Size = new System.Drawing.Size(177, 22);
             this.ExitButton.Text = "Exit";
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
@@ -226,18 +238,6 @@
             this.Field.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Field_MouseMove);
             this.Field.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Field_MouseUp);
             // 
-            // SolveButton
-            // 
-            this.SolveButton.Name = "SolveButton";
-            this.SolveButton.Size = new System.Drawing.Size(180, 22);
-            this.SolveButton.Text = "Solve Level";
-            this.SolveButton.Click += new System.EventHandler(this.SolveButton_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +250,7 @@
             this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Untangle";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameForm_FormClosing);
             this.Load += new System.EventHandler(this.GameForm_Load);
             this.ClientSizeChanged += new System.EventHandler(this.GameForm_ClientSizeChanged);
             this.MainMenu.ResumeLayout(false);

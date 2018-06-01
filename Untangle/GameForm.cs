@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Untangle
 {
@@ -21,7 +22,9 @@ namespace Untangle
             verticesCount,     // количество вершин
             activeVertexIndex,    // индекс активной вершины
             generationsCount,   // количество итераций для генерации рёбер, задаётся в коде
-            level = 4;              // уровень сложности (начинается с 4 вершин)
+            level = 6,            // уровень сложности (начинается с 4 вершин)
+            autoSolves = 0;
+            
 
         // Картинка, для сохранения результата и отображения
         Bitmap bitmap;
@@ -30,12 +33,16 @@ namespace Untangle
         Graphics graphics;
 
         // Всякие булевы штучки
-        bool isWin, isMoveVertex, isPlay;
+        bool isWin, isMoveVertex, isPlay, isNewGame = true, isAutoSolve;
+
+        public static string name;
+
+        string results;
 
         // Списки ребер и вершин
         static List<Edge> Edges = new List<Edge>();
         public static List<Vertex> Vertices = new List<Vertex>();
-        public static List<Vertex> SolvedVertices = new List<Vertex>();
+        static List<Vertex> SolvedVertices = new List<Vertex>();
         static List<Edge> SolvedEdges = new List<Edge>();
         #endregion
 
@@ -96,12 +103,19 @@ namespace Untangle
         private void GameForm_Load(object sender, EventArgs e)
         {
             UpdateStartMenu();
+            FileStream fs = new FileStream("result.txt", FileMode.OpenOrCreate);
+            using (StreamReader sr = new StreamReader(fs))
+            {
+                results = sr.ReadToEnd();
+                sr.Close();
+            }
         }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
             bitmap = new Bitmap(Field.Width, Field.Height);
             graphics = Graphics.FromImage(bitmap);
+            name = "";
             StartLevel();
         }
 
@@ -177,10 +191,16 @@ namespace Untangle
 
         private void MainMenuButton_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Are you want to exit to main menu?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Save your result?", "Attention", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                level = 4;
+                results += String.Format("{0}\t Level: {1}\t Solved himself: {2}\t Auto solve: {3}\n", name, level - 5, level - 5 - autoSolves, autoSolves);
+            }
+            else if (dr == DialogResult.Cancel) return;
+            dr = MessageBox.Show("Are you want to exit to main menu?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes)
+            {
+                level = 6;
                 Vertices.Clear();
                 Edges.Clear();
                 DrawAll();
@@ -191,6 +211,7 @@ namespace Untangle
                 TitleLabel.Show();
                 TitleUnderLabel.Show();
                 isPlay = false;
+                isNewGame = true;
                 MainMenuButton.Enabled = false;
             }        
         }
@@ -208,6 +229,7 @@ namespace Untangle
             }
 
             DrawAll();
+            autoSolves++;
             IsWin(sender, new MouseEventArgs(MouseButtons.Left, 1, 1, 1, 1));
         }
 
@@ -240,8 +262,8 @@ namespace Untangle
         private void InitializeVertices()
         {
             Vertices.Clear();   // очистка списка вершин
-            Random random = new Random();   
-            verticesCount = random.Next(level, level + 2);     // рандомный выбор количества ребер
+            Random random = new Random();
+            verticesCount = level;   // рандомный выбор количества ребер
             generationsCount = random.Next(verticesCount + 1, verticesCount * verticesCount); // задание количества итераций для генерации рёбер
 
             double fi = 0;  // расстановка по кругу
@@ -289,6 +311,16 @@ namespace Untangle
                 return true;
             }
             return false;
+        }
+
+        private void GameForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FileStream fs = new FileStream("result.txt", FileMode.OpenOrCreate);
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                sw.WriteLine(results);
+                sw.Close();
+            }
         }
 
         /// <summary>
@@ -363,8 +395,6 @@ namespace Untangle
                 Vertices[second].Location = point;
             }
         }
-
-        // ПОСМОТРИ
         
         /// <summary>
         /// Слишком много геометрии, сложна
@@ -445,6 +475,25 @@ namespace Untangle
         /// </summary>
         private void StartLevel()
         {
+            if (isNewGame)
+            {
+                while (name == "")
+                {
+                    Opacity = 0;
+                    AuthForm form = new AuthForm();
+                    DialogResult dr = form.ShowDialog();
+
+                    if (dr == DialogResult.OK) break;
+                    else
+                    {
+                        Opacity = 0.95;
+                        return;
+                    }
+                }
+            }
+            Opacity = 0.95;
+
+            isNewGame = false;
             TitleLabel.Hide();      // hide - скрыть
             TitleUnderLabel.Hide();
             StartButton.Hide();
@@ -471,7 +520,7 @@ namespace Untangle
             RandomizeGraph();
             isPlay = true;
             DrawAll();
-            Text = String.Format("Untangle. Level: {0}", level - 3);    // подпись сверху
+            Text = String.Format("Untangle. Level: {0}", level - 5);    // подпись сверху
         }
 
         /// <summary>
@@ -481,7 +530,7 @@ namespace Untangle
         {
             if (isPlay)
             {
-                DialogResult dr = MessageBox.Show("You win!\nSave the result?", "Congratz", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dr = MessageBox.Show("You win!\nSave the graph picture?", "Congratz", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dr == DialogResult.Yes)
                     SaveButton_Click(sender, e);
 
@@ -493,6 +542,7 @@ namespace Untangle
                 }
                 else
                 {
+                    results += String.Format("{0}\t Level: {1}\t Solved himself: {2}\t Auto solve: {3}\n", name, level - 5, level - 5 - autoSolves, autoSolves);
                     level = 4;
                     Vertices.Clear();
                     Edges.Clear();

@@ -1,0 +1,10 @@
+kek	 Level: 1	 Solved himself: 1	 Auto solve: 0
+
+kek	 Level: 4	 Solved himself: 2	 Auto solve: 2
+
+weazy	 Level: 5	 Solved himself: 4	 Auto solve: 1
+
+alastor	 Level: 1	 Solved himself: 0	 Auto solve: 1
+
+floppy hills	 Level: 6	 Solved himself: 4	 Auto solve: 2
+

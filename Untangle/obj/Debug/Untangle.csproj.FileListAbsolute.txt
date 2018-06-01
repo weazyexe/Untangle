@@ -18,3 +18,4 @@ E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csproj.GenerateResource.cac
 E:\repositories\Untangle\Untangle\obj\Debug\Untangle.csproj.CoreCompileInputs.cache
 E:\repositories\Untangle\Untangle\obj\Debug\Untangle.exe
 E:\repositories\Untangle\Untangle\obj\Debug\Untangle.pdb
+E:\repositories\Untangle\Untangle\obj\Debug\Untangle.AuthForm.resources
